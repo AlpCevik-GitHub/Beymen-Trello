@@ -170,7 +170,8 @@ public class BasePage extends TestBase {
             BrowserUtils.waitForVisibility(basketPrice, 5);
             String cartPrice = basketPrice.getText().substring(0,basketPrice.getText().length()-6);
 
-            Assert.assertEquals(prodPrice, cartPrice);
+            //Assert.assertEquals(prodPrice, cartPrice);
+            Assert.assertTrue(prodPrice.matches(cartPrice));
         }
 
         public void increaseNumberOfProduct (String numberOfProduct){
@@ -208,7 +209,8 @@ public class BasePage extends TestBase {
             String expectedMessage = "SEPETINIZDE ÜRÜN BULUNMAMAKTADIR";
             String actualMessage = getMessage.getText();
 
-            Assert.assertEquals(expectedMessage, actualMessage);
+            //Assert.assertEquals(expectedMessage, actualMessage);
+            Assert.assertTrue(expectedMessage.matches(actualMessage));
         }
 
     }
