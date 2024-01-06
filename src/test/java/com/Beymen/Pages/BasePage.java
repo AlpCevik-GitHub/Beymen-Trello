@@ -1,6 +1,8 @@
 package com.Beymen.Pages;
 
 import com.Beymen.Utilities.*;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.junit.Assert;
@@ -75,13 +77,18 @@ public class BasePage extends TestBase {
     @FindBy(xpath = "//*[text()='Sepetinizde Ürün Bulunmamaktadır']")
     public WebElement getMessage;
 
-    public void mainPage() {
-        Driver.get().get(ConfigurationReader.get("url"));
+    @FindBy(xpath = "(//tbody/tr)[1]")
+    public WebElement firmaFirst;
+    @FindBy(xpath = "//tbody/tr")
+    public List<WebElement> firmaList;
 
+    public void mainPage() {
+        Driver.get().get(ConfigurationReader.get("url1"));
+        BrowserUtils.waitFor(2);
         //Açılıştaki cookies kapatılır
-        BrowserUtils.waitForClickablility(cookies_Loc, 5);
-        cookies_Loc.click();
-        genderSelection.click();
+        //BrowserUtils.waitForClickablility(cookies_Loc, 5);
+        //cookies_Loc.click();
+        //genderSelection.click();
     }
 
     public void checkMainPage() {
@@ -124,6 +131,9 @@ public class BasePage extends TestBase {
         }
         return allURL;
     }
+
+
+
 
         public void getRandomProduct () {
 
